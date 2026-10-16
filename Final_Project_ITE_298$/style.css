@@ -1,0 +1,145 @@
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    background-image: linear-gradient(45deg, rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url(hotel_logo.avif);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.container {
+    width: 90%;
+    max-width: 900px;
+    margin: 40px auto;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.header h1 {
+    margin-bottom: 8px;
+    color: white;
+}
+
+.header p {
+    color: white;
+}
+
+.booking-card {
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(156, 39, 176, 0.15);
+    border: 1px solid #f1d7ee;
+}
+
+
+.form-row {
+    display: flex;
+    gap: 20px;
+}
+
+.form-group {
+    flex: 1;
+    margin-bottom: 18px;
+}
+
+label {
+    display: block;
+    margin-bottom: 7px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #5e3568;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid #d8b9df;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+    background-color: #fffaff;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: #9c27b0;
+    box-shadow: 0 0 6px rgba(233, 30, 99, 0.25);
+}
+
+textarea {
+    resize: vertical;
+}
+
+.buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+button {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.confirm {
+    background: linear-gradient(135deg, #8e24aa, #d81b60);
+    color: white;
+}
+
+.confirm:hover {
+    background: linear-gradient(135deg, #6a1b9a, #ad1457);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(156, 39, 176, 0.3);
+}
+
+.cancel {
+    background-color: #f48fb1;
+    color: white;
+}
+
+.cancel:hover {
+    background-color: #ec407a;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(233, 30, 99, 0.25);
+}
+
+@media (max-width: 600px) {
+
+    .container {
+        width: 95%;
+        margin: 20px auto;
+    }
+
+    .booking-card {
+        padding: 20px;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .buttons {
+        flex-direction: column;
+    }
+}
