@@ -4,143 +4,493 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hotel Booking System</title>
-    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css?v=8" />
   </head>
   <body>
-    <div class="container">
-      <div class="header">
-        <h1>Hotel Booking</h1>
-        <p>Reserve your comfortable stay with us</p>
+    <!-- top bar -->
+    <header class="topbar">
+      <div class="topbar-content">
+        <a href="Home.php" class="logo">Hotel Iloilo</a>
+        <a href="Home.php" class="back-home"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
       </div>
+    </header>
 
-      <div class="booking-card">
-        <form action="booking.php" method="post">
-          <h2>Guest Information</h2>
-          <div class="form-group">
-            <label for="address">Complete Address</label>
-            <input
-              type="text"
-              id="address"
-              name="address"
-              placeholder="House No. Street, Barangay"
-              required
-            />
-          </div>
+    <!-- page title -->
+    <section class="banner">
+      <h1>Hotel Booking</h1>
+      <p>Reserve your comfortable stay with us</p>
+    </section>
 
-          <div class="form-row">
+    <main class="container">
+      <p class="error" id="error"></p>
+
+      <form action="booking.php" method="post" enctype="multipart/form-data" class="booking-layout">
+        <!-- left side: the steps -->
+        <div class="steps">
+          <!-- step 1 -->
+          <section class="step">
+            <div class="step-title">
+              <span class="step-number">1</span>
+              <div>
+                <h2>Your Stay</h2>
+                <p>When are you coming and how many guests?</p>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="check_in"><i class="fa-solid fa-calendar-check"></i> Check-in</label>
+                <input type="date" id="check_in" name="check_in" required />
+              </div>
+              <div class="form-group">
+                <label for="check_out"><i class="fa-solid fa-calendar-xmark"></i> Check-out</label>
+                <input type="date" id="check_out" name="check_out" required />
+              </div>
+              <div class="form-group">
+                <label for="guests"><i class="fa-solid fa-user-group"></i> Guests</label>
+                <select required id="guests" name="guests">
+                  <option value="">Select guests</option>
+                  <option value="1">1 Guest</option>
+                  <option value="2">2 Guests</option>
+                  <option value="3">3 Guests</option>
+                  <option value="4">4 Guests</option>
+                  <option value="5">5+ Guests</option>
+                </select>
+              </div>
+            </div>
+          </section>
+
+          <!-- step 2 -->
+          <section class="step">
+            <div class="step-title">
+              <span class="step-number">2</span>
+              <div>
+                <h2>Choose Your Room</h2>
+                <p>Select a room type, then pick an available room number.</p>
+              </div>
+            </div>
+
+            <div class="room-types">
+              <label class="room-type">
+                <input type="radio" name="room_type" value="Standard Room" data-price="2500" data-image="images/images5.jpg" required />
+                <span class="room-type-card">
+                  <img src="images/images5.jpg" alt="Standard Room" />
+                  <span class="room-type-info">
+                    <strong>Standard Room</strong>
+                    <small><i class="fa-solid fa-user"></i> 1-2 guests · 2 Single beds</small>
+                    <span class="room-price">₱2,500 <small>/night</small></span>
+                  </span>
+                </span>
+              </label>
+
+              <label class="room-type">
+                <input type="radio" name="room_type" value="Deluxe Room" data-price="3800" data-image="images/images4.jpg" />
+                <span class="room-type-card">
+                  <img src="images/images4.jpg" alt="Deluxe Room" />
+                  <span class="room-type-info">
+                    <strong>Deluxe Room</strong>
+                    <small><i class="fa-solid fa-user"></i> 2 guests · 1 Queen bed</small>
+                    <span class="room-price">₱3,800 <small>/night</small></span>
+                  </span>
+                </span>
+              </label>
+
+              <label class="room-type">
+                <input type="radio" name="room_type" value="Family Room" data-price="5200" data-image="images/image1.jpg" />
+                <span class="room-type-card">
+                  <img src="images/image1.jpg" alt="Family Room" />
+                  <span class="room-type-info">
+                    <strong>Family Room</strong>
+                    <small><i class="fa-solid fa-user"></i> 4-5 guests · 2 Queen beds</small>
+                    <span class="room-price">₱5,200 <small>/night</small></span>
+                  </span>
+                </span>
+              </label>
+
+              <label class="room-type">
+                <input type="radio" name="room_type" value="Suite Room" data-price="7500" data-image="images/image2.jpg" />
+                <span class="room-type-card">
+                  <img src="images/image2.jpg" alt="Suite Room" />
+                  <span class="room-type-info">
+                    <strong>Suite Room</strong>
+                    <small><i class="fa-solid fa-user"></i> 2-3 guests · 1 King bed</small>
+                    <span class="room-price">₱7,500 <small>/night</small></span>
+                  </span>
+                </span>
+              </label>
+
+              <label class="room-type">
+                <input type="radio" name="room_type" value="Presidential Suite" data-price="15000" data-image="images/images3.jpg" />
+                <span class="room-type-card">
+                  <img src="images/images3.jpg" alt="Presidential Suite" />
+                  <span class="room-type-info">
+                    <strong>Presidential Suite</strong>
+                    <small><i class="fa-solid fa-user"></i> 4 guests · 2 King bedrooms</small>
+                    <span class="room-price">₱15,000 <small>/night</small></span>
+                  </span>
+                </span>
+              </label>
+            </div>
+
+            <h3 class="sub-title">Room Number</h3>
+            <div class="room-numbers" id="roomNumbers">
+              <label class="room-number"><input type="radio" name="room_number" value="101" required /><span>101</span></label>
+              <label class="room-number"><input type="radio" name="room_number" value="102" /><span>102</span></label>
+              <label class="room-number"><input type="radio" name="room_number" value="103" /><span>103</span></label>
+              <label class="room-number"><input type="radio" name="room_number" value="201" /><span>201</span></label>
+              <label class="room-number"><input type="radio" name="room_number" value="202" /><span>202</span></label>
+              <label class="room-number"><input type="radio" name="room_number" value="203" /><span>203</span></label>
+              <label class="room-number"><input type="radio" name="room_number" value="301" /><span>301</span></label>
+              <label class="room-number"><input type="radio" name="room_number" value="302" /><span>302</span></label>
+            </div>
+            <small class="hint" id="roomHint">Pick your check-in and check-out dates to see which rooms are available.</small>
+          </section>
+
+          <!-- step 3 -->
+          <section class="step">
+            <div class="step-title">
+              <span class="step-number">3</span>
+              <div>
+                <h2>Guest Information</h2>
+                <p>Where are you coming from?</p>
+              </div>
+            </div>
+
             <div class="form-group">
-              <label for="city">City</label>
+              <label for="address"><i class="fa-solid fa-house"></i> Complete Address</label>
               <input
                 type="text"
-                id="city"
-                name="city"
-                placeholder="Enter city"
+                id="address"
+                name="address"
+                placeholder="House No. Street, Barangay"
                 required
               />
             </div>
 
-            <div class="form-group">
-              <label for="country">Country</label>
-              <select required id="country" name="country">
-                <option value="">Select country</option>
-                <option>Philippines</option>
-                <option>United States</option>
-                <option>Japan</option>
-                <option>South Korea</option>
-                <option>Singapore</option>
-                <option>Other</option>
-              </select>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="city"><i class="fa-solid fa-city"></i> City</label>
+                <input
+                  type="text"
+                  id="city"
+                  name="city"
+                  placeholder="Enter city"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="country"><i class="fa-solid fa-earth-asia"></i> Country</label>
+                <select required id="country" name="country">
+                  <option value="">Select country</option>
+                  <option>Philippines</option>
+                  <option>United States</option>
+                  <option>Japan</option>
+                  <option>South Korea</option>
+                  <option>Singapore</option>
+                  <option>Other</option>
+                </select>
+              </div>
             </div>
-          </div>
+          </section>
 
-          <div class="form-group">
-            <label for="guests">Number of Guests</label>
-            <select required id="guests" name="guests">
-              <option value="">Select guests</option>
-              <option value="1">1 Guest</option>
-              <option value="2">2 Guests</option>
-              <option value="3">3 Guests</option>
-              <option value="4">4 Guests</option>
-              <option value="5">5+ Guests</option>
-            </select>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="room">Room Type</label>
-              <select required id="room" name="room_type">
-                <option value="">Select room type</option>
-                <option>Standard Room</option>
-                <option>Deluxe Room</option>
-                <option>Family Room</option>
-                <option>Suite Room</option>
-                <option>Presidential Suite</option>
-              </select>
+          <!-- step 4 -->
+          <section class="step">
+            <div class="step-title">
+              <span class="step-number">4</span>
+              <div>
+                <h2>Valid ID</h2>
+                <p>We need one valid ID to confirm who is booking.</p>
+              </div>
             </div>
 
+            <div class="form-row">
+              <div class="form-group">
+                <label for="id_type"><i class="fa-regular fa-id-card"></i> ID Type</label>
+                <select required id="id_type" name="id_type">
+                  <option value="">Select ID type</option>
+                  <option>PhilSys National ID</option>
+                  <option>Passport</option>
+                  <option>Driver's License</option>
+                  <option>UMID</option>
+                  <option>SSS ID</option>
+                  <option>PRC ID</option>
+                  <option>Postal ID</option>
+                  <option>Voter's ID</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="id_number"><i class="fa-solid fa-hashtag"></i> ID Number</label>
+                <input
+                  type="text"
+                  id="id_number"
+                  name="id_number"
+                  placeholder="As shown on your ID"
+                  pattern="[A-Za-z0-9\-]{5,25}"
+                  title="5 to 25 letters, numbers or dashes"
+                  maxlength="25"
+                  autocomplete="off"
+                  required
+                />
+              </div>
+            </div>
+
             <div class="form-group">
-              <label for="room_number">Room Number</label>
-              <select required id="room_number" name="room_number">
-                <option value="">Select room</option>
-                <option value="101">101</option>
-                <option value="102">102</option>
-                <option value="103">103</option>
-                <option value="201">201</option>
-                <option value="202">202</option>
-                <option value="203">203</option>
-                <option value="301">301</option>
-                <option value="302">302</option>
-              </select>
+              <label for="id_file"><i class="fa-solid fa-upload"></i> Photo of your ID</label>
+              <input
+                type="file"
+                id="id_file"
+                name="id_file"
+                accept="image/jpeg,image/png,application/pdf"
+                required
+              />
+              <small class="hint">JPG, PNG or PDF, up to 5 MB. Make sure your name and ID number are readable. Your ID is only seen by our staff.</small>
+            </div>
+          </section>
+
+          <!-- step 5 -->
+          <section class="step">
+            <div class="step-title">
+              <span class="step-number">5</span>
+              <div>
+                <h2>Payment &amp; Requests</h2>
+                <p>Choose how you want to pay.</p>
+              </div>
+            </div>
+
+            <div class="payments">
+              <label class="payment">
+                <input type="radio" name="payment" value="Cash" required />
+                <span><i class="fa-solid fa-money-bill-wave"></i> Cash</span>
+              </label>
+              <label class="payment">
+                <input type="radio" name="payment" value="Credit Card" />
+                <span><i class="fa-solid fa-credit-card"></i> Credit Card</span>
+              </label>
+              <label class="payment">
+                <input type="radio" name="payment" value="Debit Card" />
+                <span><i class="fa-regular fa-credit-card"></i> Debit Card</span>
+              </label>
+              <label class="payment">
+                <input type="radio" name="payment" value="Gcash" />
+                <span><i class="fa-solid fa-mobile-screen"></i> GCash</span>
+              </label>
+              <label class="payment">
+                <input type="radio" name="payment" value="Maya" />
+                <span><i class="fa-solid fa-wallet"></i> Maya</span>
+              </label>
+            </div>
+
+            <div class="form-group">
+              <label for="requests"><i class="fa-solid fa-comment-dots"></i> Special Requests <small>(optional)</small></label>
+              <textarea
+                id="requests"
+                name="requests"
+                placeholder="Example: Extra bed, late check-in, room preference..."
+                rows="4"
+              ></textarea>
+            </div>
+          </section>
+        </div>
+
+        <!-- right side: summary -->
+        <aside class="summary">
+          <div class="summary-card">
+            <img src="hotel_logo.avif" alt="Selected room" id="summaryImage" />
+            <div class="summary-body">
+              <h2>Booking Summary</h2>
+
+              <dl>
+                <div>
+                  <dt>Room</dt>
+                  <dd id="sumRoom">Not selected</dd>
+                </div>
+                <div>
+                  <dt>Room No.</dt>
+                  <dd id="sumNumber">-</dd>
+                </div>
+                <div>
+                  <dt>Check-in</dt>
+                  <dd id="sumIn">-</dd>
+                </div>
+                <div>
+                  <dt>Check-out</dt>
+                  <dd id="sumOut">-</dd>
+                </div>
+                <div>
+                  <dt>Guests</dt>
+                  <dd id="sumGuests">-</dd>
+                </div>
+                <div>
+                  <dt>Payment</dt>
+                  <dd id="sumPayment">-</dd>
+                </div>
+              </dl>
+
+              <div class="price-lines">
+                <div>
+                  <span id="sumRate">₱0 × 0 nights</span>
+                  <span id="sumSubtotal">₱0</span>
+                </div>
+              </div>
+
+              <div class="total">
+                <span>Total</span>
+                <span id="sumTotal">₱0</span>
+              </div>
+
+              <button type="submit" class="confirm" name="submit">
+                <i class="fa-solid fa-check"></i> Confirm Booking
+              </button>
+              <button type="reset" class="cancel" name="reset">
+                Clear Form
+              </button>
+
+              <p class="note"><i class="fa-solid fa-circle-info"></i> Your booking will be <strong>Pending</strong> until our staff confirms it.</p>
             </div>
           </div>
+        </aside>
+      </form>
+    </main>
 
-          <div class="form-row">
-            <div class="form-group">
-              <label for="check_in">Check-in Date</label>
-              <input type="date" id="check_in" name="check_in" required />
-            </div>
+    <script>
+      // show the error sent back by booking.php
+      const messages = {
+        past: "The check-in date cannot be in the past.",
+        dates: "The check-out date must be after the check-in date.",
+        taken: "Sorry, that room is already booked for those dates. Please choose another room or date.",
+        id_type: "Please choose a valid ID type.",
+        id_number: "Please enter a valid ID number (5 to 25 letters, numbers or dashes).",
+        id_file: "Please upload a photo of your valid ID.",
+        id_format: "Your ID must be a JPG, PNG or PDF file.",
+        id_size: "Your ID file is too big. The limit is 5 MB.",
+        id_upload: "We couldn't save your ID. Please try uploading it again.",
+      };
+      const error = new URLSearchParams(window.location.search).get("error");
+      if (messages[error]) {
+        const box = document.getElementById("error");
+        box.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i> ' + messages[error];
+        box.style.display = "block";
+      }
 
-            <div class="form-group">
-              <label for="check_out">Check-out Date</label>
-              <input type="date" id="check_out" name="check_out" required />
-            </div>
-          </div>
+      // don't allow past dates, and check-out must be after check-in
+      const form = document.querySelector("form");
+      const checkIn = document.getElementById("check_in");
+      const checkOut = document.getElementById("check_out");
+      const now = new Date();
+      const today = new Date(now.getTime() - now.getTimezoneOffset() * 60000).toISOString().split("T")[0];
+      checkIn.min = today;
+      checkOut.min = today;
 
-          <div class="form-row">
-            <div class="form-group">
-              <label for="payment">Payment Method</label>
-              <select required id="payment" name="payment">
-                <option value="">Select payment method</option>
-                <option value="Cash">Cash</option>
-                <option value="Credit Card">Credit Card</option>
-                <option value="Debit Card">Debit Card</option>
-                <option value="Gcash">GCash</option>
-                <option value="Maya">Maya</option>
-              </select>
-            </div>
-          </div>
+      checkIn.addEventListener("change", () => {
+        if (checkIn.value) {
+          const next = new Date(checkIn.value);
+          next.setDate(next.getDate() + 1);
+          checkOut.min = next.toISOString().split("T")[0];
+          if (checkOut.value && checkOut.value < checkOut.min) {
+            checkOut.value = "";
+          }
+        }
+        updateRooms();
+      });
 
-          <h2>Additional Information</h2>
-          <div class="form-group">
-            <label for="requests">Special Requests</label>
-            <textarea
-              id="requests"
-              name="requests"
-              placeholder="Example: Extra bed, late check-in, room preference..."
-              rows="4"
-            ></textarea>
-          </div>
+      checkOut.addEventListener("change", updateRooms);
 
-          <div class="buttons">
-            <button type="submit" class="confirm" name="submit">
-              Confirm Booking
-            </button>
-            <button type="reset" class="cancel" name="reset">
-              Cancel Booking
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
+      // mark rooms that are already booked for the chosen dates
+      const roomInputs = document.querySelectorAll("input[name='room_number']");
+      const roomHint = document.getElementById("roomHint");
+
+      function updateRooms() {
+        // reset every room first
+        roomInputs.forEach((input) => {
+          input.disabled = false;
+          input.parentElement.classList.remove("booked");
+        });
+
+        if (!checkIn.value || !checkOut.value) {
+          roomHint.textContent = "Pick your check-in and check-out dates to see which rooms are available.";
+          updateSummary();
+          return;
+        }
+
+        fetch("room_availability.php?check_in=" + checkIn.value + "&check_out=" + checkOut.value)
+          .then((response) => response.json())
+          .then((booked) => {
+            roomInputs.forEach((input) => {
+              if (booked.includes(input.value)) {
+                input.disabled = true;
+                input.checked = false;
+                input.parentElement.classList.add("booked");
+              }
+            });
+
+            const free = roomInputs.length - booked.length;
+            roomHint.textContent = free > 0
+              ? free + " of " + roomInputs.length + " rooms available for these dates."
+              : "Sorry, all rooms are booked for these dates. Please choose other dates.";
+            updateSummary();
+          });
+      }
+
+      // booking summary on the right side
+      function formatDate(value) {
+        return new Date(value + "T00:00").toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+      }
+
+      function peso(amount) {
+        return "₱" + amount.toLocaleString("en-US");
+      }
+
+      function updateSummary() {
+        const room = form.querySelector("input[name='room_type']:checked");
+        const number = form.querySelector("input[name='room_number']:checked");
+        const payment = form.querySelector("input[name='payment']:checked");
+        const guests = document.getElementById("guests");
+
+        document.getElementById("sumRoom").textContent = room ? room.value : "Not selected";
+        document.getElementById("summaryImage").src = room ? room.dataset.image : "hotel_logo.avif";
+        document.getElementById("sumNumber").textContent = number ? number.value : "-";
+        document.getElementById("sumIn").textContent = checkIn.value ? formatDate(checkIn.value) : "-";
+        document.getElementById("sumOut").textContent = checkOut.value ? formatDate(checkOut.value) : "-";
+        document.getElementById("sumGuests").textContent = guests.value ? guests.selectedOptions[0].text : "-";
+        document.getElementById("sumPayment").textContent = payment ? payment.parentElement.textContent.trim() : "-";
+
+        let nights = 0;
+        if (checkIn.value && checkOut.value) {
+          nights = Math.max(0, (new Date(checkOut.value) - new Date(checkIn.value)) / 86400000);
+        }
+        const price = room ? Number(room.dataset.price) : 0;
+
+        document.getElementById("sumRate").textContent = peso(price) + " × " + nights + (nights == 1 ? " night" : " nights");
+        document.getElementById("sumSubtotal").textContent = peso(price * nights);
+        document.getElementById("sumTotal").textContent = peso(price * nights);
+      }
+
+      // check the ID file before uploading (booking.php checks it again)
+      const idFile = document.getElementById("id_file");
+      const allowedTypes = ["image/jpeg", "image/png", "application/pdf"];
+
+      idFile.addEventListener("change", () => {
+        const file = idFile.files[0];
+        if (!file) return;
+
+        if (!allowedTypes.includes(file.type)) {
+          idFile.setCustomValidity("Your ID must be a JPG, PNG or PDF file.");
+        } else if (file.size > 5 * 1024 * 1024) {
+          idFile.setCustomValidity("Your ID file is too big. The limit is 5 MB.");
+        } else {
+          idFile.setCustomValidity("");
+        }
+        idFile.reportValidity();
+      });
+
+      form.addEventListener("change", updateSummary);
+      form.addEventListener("reset", () => setTimeout(updateRooms, 0));
+    </script>
   </body>
 </html>

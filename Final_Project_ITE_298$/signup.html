@@ -4,11 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Signup</title>
-    <link rel="stylesheet" href="signup.css" />
+    <link rel="stylesheet" href="signup.css?v=4" />
   </head>
   <body>
     <div class="container">
       <h1>Signup Form</h1>
+      <p class="error" id="error" style="display: none">
+        This email is already registered. Please use another email or log in.
+      </p>
       <form action="signup.php" method="post">
         <label for="firstname">FirstName:</label>
         <input
@@ -65,5 +68,11 @@
         <p>Already have an account? <a href="loginForm.html">login?</a></p>
       </form>
     </div>
+
+    <script>
+      if (new URLSearchParams(window.location.search).get("error") == "email") {
+        document.getElementById("error").style.display = "block";
+      }
+    </script>
   </body>
 </html>

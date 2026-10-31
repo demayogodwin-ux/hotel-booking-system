@@ -1,41 +1,60 @@
+/* same fonts and colors as the Home page */
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Source+Sans+3:wght@400;600;700&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Source Sans 3", sans-serif;
 }
 
+h1, h2, h3, h4 {
+  font-family: "Lora", serif;
+}
+
+:root {
+  --white-color: #fff;
+  --primary-color: #3b141c;
+  --secondary-color: #b8863b;
+  --light-pink-color: #f7f5f2;
+}
 
 body {
-  font-family: Arial, sans-serif;
-  background-color: #222;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  padding: 30px 16px;
+  background-image: linear-gradient(45deg, rgba(0, 0, 0, .6), rgba(59, 20, 28, .6)), url(hotel_logo.avif);
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 .container {
   width: 100%;
-  max-width: 450px;
-  background: white;
-  padding: 35px;
-  border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  max-width: 460px;
+  background: var(--white-color);
+  padding: 40px 35px;
+  border-radius: 6px;
+  border-top: 6px solid var(--secondary-color);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
 }
 
 h1 {
   text-align: center;
-  margin-bottom: 25px;
-  color: #333;
+  color: var(--primary-color);
   font-size: 30px;
+  margin-bottom: 20px;
 }
 
 label {
   display: block;
   margin-bottom: 7px;
   margin-top: 15px;
-  color: #333;
-  font-weight: bold;
+  color: var(--primary-color);
+  font-weight: 600;
+  font-size: 14px;
 }
 
 input[type="text"],
@@ -43,67 +62,79 @@ input[type="email"],
 input[type="password"],
 input[type="tel"] {
   width: 100%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  padding: 12px 15px;
+  border: 1px solid #e3d4d7;
+  border-radius: 4px;
+  background: var(--light-pink-color);
   font-size: 15px;
   outline: none;
   transition: 0.3s;
 }
 
-
 input[type="text"]:focus,
 input[type="email"]:focus,
 input[type="password"]:focus,
 input[type="tel"]:focus {
-  border-color: #667eea;
-  box-shadow: 0 0 5px rgba(102, 126, 234, 0.4);
+  border-color: var(--secondary-color);
+  background: var(--white-color);
+  box-shadow: 0 0 0 3px rgba(184, 134, 59, 0.2);
 }
 
 input[type="radio"] {
   margin-right: 5px;
   margin-left: 5px;
+  accent-color: var(--secondary-color);
 }
 
 button {
   width: 100%;
   padding: 13px;
   margin-top: 20px;
-  border: none;
-  border-radius: 8px;
-  background: #667eea;
-  color: white;
+  border: 2px solid var(--secondary-color);
+  border-radius: 6px;
+  background: var(--secondary-color);
+  color: var(--primary-color);
   font-size: 16px;
-  font-weight: bold;
+  font-weight: 600;
   cursor: pointer;
-  transition: 0.3s;
+  transition: 0.3s ease;
 }
 
 button:hover {
-  background: #5568d9;
-  transform: translateY(-2px);
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  color: var(--white-color);
 }
 
 p {
   text-align: center;
   margin-top: 20px;
   color: #666;
+  font-size: 14px;
 }
 
+p.error {
+  margin: 0 0 10px;
+  padding: 10px 14px;
+  border-radius: 4px;
+  background: #fde2e2;
+  color: #b42318;
+  font-weight: 600;
+}
 
 p a {
-  color: #667eea;
+  color: var(--primary-color);
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 600;
 }
 
 p a:hover {
-  text-decoration: underline;
+  color: var(--secondary-color);
 }
 
 @media (max-width: 500px) {
   .container {
-    padding: 25px;
+    padding: 30px 22px;
   }
 
   h1 {

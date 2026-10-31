@@ -4,32 +4,87 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login NOW</title>
-    <link rel="stylesheet" href="login.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="login.css?v=5" />
   </head>
   <body>
-    <form action="login.php" method="post">
-      <h1>Login NOW</h1>
+    <div class="login-box">
+      <!-- left side: hotel photo -->
+      <div class="login-image">
+        <h2 class="logo">Hotel Iloilo</h2>
+        <div class="welcome">
+          <h3>Best Hotel in Iloilo</h3>
+          <p>Your perfect stay awaits you here. Log in to book a room and manage your reservations.</p>
+        </div>
+      </div>
 
-      <label for="email">Enter Email</label>
-      <input
-        type="text"
-        id="email"
-        name="email"
-        required
-        placeholder="Enter@Email"
-      />
+      <!-- right side: form -->
+      <form action="login.php" method="post">
+        <h1>Welcome Back</h1>
+        <p class="subtitle">Please log in to your account</p>
 
-      <label for="password">Password</label>
-      <input
-        type="password"
-        id="password"
-        name="password"
-        required
-        placeholder="Password"
-      />
+        <p class="success" id="success">
+          <i class="fa-solid fa-circle-check"></i> Account created! Please log in.
+        </p>
 
-      <button type="submiit" name="login">LOGIN</button>
-      <p>Don't have an account? <a href="signup.html">signup?</a></p>
-    </form>
+        <p class="error" id="error">
+          <i class="fa-solid fa-circle-exclamation"></i> Wrong email or password.
+        </p>
+
+        <label for="email">Email</label>
+        <div class="input-box">
+          <i class="fa-solid fa-envelope"></i>
+          <input
+            type="text"
+            id="email"
+            name="email"
+            required
+            placeholder="Enter your email"
+          />
+        </div>
+
+        <label for="password">Password</label>
+        <div class="input-box">
+          <i class="fa-solid fa-lock"></i>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            required
+            placeholder="Enter your password"
+          />
+          <button type="button" class="show-password" id="showPassword" aria-label="Show password">
+            <i class="fa-solid fa-eye"></i>
+          </button>
+        </div>
+
+        <button type="submit" name="login" class="login-button">LOGIN</button>
+        <p class="signup-link">Don't have an account? <a href="signup.html">Sign up</a></p>
+      </form>
+    </div>
+
+    <script>
+      if (new URLSearchParams(window.location.search).has("error")) {
+        document.getElementById("error").style.display = "block";
+      }
+      if (new URLSearchParams(window.location.search).has("signup")) {
+        document.getElementById("success").style.display = "block";
+      }
+
+      // show or hide the password
+      const showPassword = document.getElementById("showPassword");
+      const password = document.getElementById("password");
+
+      showPassword.addEventListener("click", () => {
+        const hidden = password.type == "password";
+        password.type = hidden ? "text" : "password";
+        showPassword.innerHTML = hidden
+          ? '<i class="fa-solid fa-eye-slash"></i>'
+          : '<i class="fa-solid fa-eye"></i>';
+      });
+    </script>
   </body>
 </html>

@@ -1,0 +1,2 @@
+# guest IDs are private: only view_id.php (admins) can read them
+Require all denied
